@@ -1,5 +1,6 @@
 <html>
     <head>
+    <title>G5T1-Restaurant</title>
 
         <!-- HEAD
             This is where you put your jQuery, Bootstrap JS library imports
@@ -18,13 +19,13 @@
         <div class="container">
             <div class="row">
                 <div class="jumbotron align-items-center justify-content-center col-md-offset-2 col-md-8">
-                    <form role="form" id="Track" class="form" action="track.php" method="post">
+                    <form role="form" id="Track" class="form" action="add-order.php" method="post">
                         <div class="form-group">
                             Enter Card Detail
                             <input class="form-control" type="text" name="Username" placeholder="Card Detail">
                         </div>
                         <center>
-                            <button name="Track" type="submit" class="btn btn-primary center-block" style="font-size : 30px; height: 100px; width:300px">Track Order &rarr; </button>
+                            <button name="Track" type="submit" class="btn btn-primary center-block" style="font-size : 30px; height: 100px; width:300px">Confirm Payment &rarr; </button>
                         </center> 
                     </form>
 

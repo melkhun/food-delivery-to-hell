@@ -1,4 +1,5 @@
 <html>
+<title>G5T1-Restaurant</title>
 <body>
     <center>
 
@@ -7,7 +8,7 @@
     <form id="Pay" class="form" action="payment.php" method="post"> 
         <table id="booksTable" class='table table-striped' style="font-size:40px" id='book-list' border='1'>
             <tr>
-                <th>Itam</th>
+                <th>Item</th>
                 <th>Price</th>
                 <th>Discription</th>
                 <th>Quantity</th>
@@ -28,7 +29,7 @@
                     "<td>" + bookList[i].food_name + "</td>" +
                     "<td>" + bookList[i].food_price + "</td>" +
                     "<td>" + bookList[i].food_description + "</td>" +
-                    "<td>" +
+                    '<td> <input type="text" name="Quantity[]" placeholder="Quantity"></td>'
                 
 
                 rows += "<tr>" + eachRow + "</tr>";
