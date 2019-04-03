@@ -1,37 +1,90 @@
 <html>
     <head>
     <title>G5T1-Restaurant</title>
-
-        <!-- HEAD
-            This is where you put your jQuery, Bootstrap JS library imports
-            -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-            crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
     </head>
+    
     <body style="background-color:rgb(241, 241, 231)">
-        <center>
-            this will show all selected items. and the sub total <br>
 
-            show total amount
-        </center>
+            <?php
+                $cart = array();
+                $count = 0;
+                for ( $i = 0; $i < 3; $i++) {
+                    if ((int)$_POST['Quantity'][$i] >0){
+                        $cart[$count]=array('food_name'=>$_POST['food_name'][$i], 'price'=>(float)$_POST['food_price'][$i], 'description'=>$_POST['food_description'][$i], 'quantity'=>(int)$_POST['Quantity'][$i]);
+                        $count+=1;
+                        
+                    } 
+                }
+                $_SESSION['cart']=$cart;
+                
+
+            ?>
+
+
         <div class="container">
-            <div class="row">
-                <div class="jumbotron align-items-center justify-content-center col-md-offset-2 col-md-8">
-                    <form role="form" id="Track" class="form" action="add-order.php" method="post">
-                        <div class="form-group">
-                            Enter Card Detail
-                            <input class="form-control" type="text" name="Username" placeholder="Card Detail">
-                        </div>
-                        <center>
-                            <button name="Track" type="submit" class="btn btn-primary center-block" style="font-size : 30px; height: 100px; width:300px">Confirm Payment &rarr; </button>
-                        </center> 
-                    </form>
+        <div class="jumbotron text-center">
+            <img src="snaktime_logo.png" class="img-fluid">
+                <table id="foodTable" class='table text-center' id='food-list'>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <?php
+
+                    $cart=$_SESSION['cart'];
+                    for ($i = 0 ; $i < sizeof($cart) ; $i++){
+                     
+                        echo "
+                            <tr>
+                                <td>" . $cart[$i]['food_name'] . "</td>
+                                <td>" . $cart[$i]['price'] . "</td>
+                                <td>" . $cart[$i]['description'] . "</td>
+                                <td>" . $cart[$i]['quantity'] . "</td>
+                            </tr>";
+                    }
+                    ?>
+                </table>
+                
+                    <form action= "https://sandbox.paypal.com/cgi-bin/webscr" method="post">
+                        
+                        <input type="hidden" name="custom"  id="custom" value="">
+                        <input type="hidden" name="cmd" value="cart">
+                        <input type="hidden" name="upload" value="1">
+                        <input type="hidden" name="business" value="esmG5T1@ymail.com">
+                        <input type="hidden" name="custom"  id="custom" value="">
+                        <!--                   
+                         $x = $x + 1;
+                         $checkout_btn .= '<div id = "item_' . $x . '" class = "itemwrap">
+						 <input name = "item_name_'  . $x . '" value = "' . $item_name . '" type = "hidden">
+                                                  <input type="hidden" name="amount_' . $x .  '" value="' . $subtotal. '"> 
+						  
+                         <input type="hidden" name="quantity_' . $x . '" value="' . $value . '"> 
+                             
+                         </div>' ;
+                         -->
+                        <input type="hidden" name="return" value="add-order.php">
+                        <input type="hidden" name="rm" value="2">
+                        <input type="hidden" name="cbt" value="Return to The Store">
+               
+                                           
+                        <input type="hidden" name="currency_code"  value="SGD">
+                        <input type="submit" height= "42" width ="200" name="submit" class="btn btn btn-success center-block" style="font-size : 30px; height: 100px; width:300px"></center>
+                        </form>
 
                 
                 </div>
             </div>
-        </div>
+
     </body>
 </html>
