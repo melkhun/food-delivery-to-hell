@@ -5,7 +5,6 @@ DROP DATABASE IF EXISTS `order`;
 CREATE DATABASE `order`;
 USE `order`;
 
-
 --
 -- Table structure for table `orders`
 --
@@ -21,7 +20,7 @@ CREATE TABLE `orders` (
   `delivery_man_id` int(6) DEFAULT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'open',
   
-  PRIMARY KEY(order_id)
+  PRIMARY KEY(`order_id`)
 );
 
 INSERT INTO `orders` (`order_id`, `order_time`, `customer_id`, `item_id`, `quantity`, `delivery_location`, `total_price`, `delivery_man_id`, `status`) VALUES
