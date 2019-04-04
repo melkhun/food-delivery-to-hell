@@ -19,12 +19,11 @@
                 $count = 0;
                 for ( $i = 0; $i < 3; $i++) {
                     if ((int)$_POST['Quantity'][$i] >0){
-                        $cart[$count]=array('food_name'=>$_POST['food_name'][$i], 'price'=>(float)$_POST['food_price'][$i], 'description'=>$_POST['food_description'][$i], 'quantity'=>(int)$_POST['Quantity'][$i]);
+                        $cart[$count]=array('name'=>$_POST['food_name'][$i], 'price'=>(float)$_POST['food_price'][$i], 'description'=>$_POST['food_description'][$i], 'quantity'=>(int)$_POST['Quantity'][$i]);
                         $count+=1;
-                        
                     } 
                 }
-                $_SESSION['cart']=$cart;
+                $_SESSION['_cart']=$cart;
                 
 
             ?>
@@ -39,41 +38,51 @@
                         <th>Price</th>
                         <th>Description</th>
                         <th>Quantity</th>
+                        <th>Sub-Total</th>
                     </tr>
                     <?php
-
-                    $cart=$_SESSION['cart'];
-                    for ($i = 0 ; $i < sizeof($cart) ; $i++){
-                     
-                        echo "
-                            <tr>
-                                <td>" . $cart[$i]['food_name'] . "</td>
-                                <td>" . $cart[$i]['price'] . "</td>
-                                <td>" . $cart[$i]['description'] . "</td>
-                                <td>" . $cart[$i]['quantity'] . "</td>
-                            </tr>";
-                    }
+                        $total = 0;
+                        $cart=$_SESSION['_cart'];
+                        for ($i = 0 ; $i < sizeof($cart) ; $i++){
+                            $sub_total = $cart[$i]['price']*$cart[$i]['quantity'];
+                            $total = $total + $sub_total;
+                            echo "
+                                <tr>
+                                    <td>" . $cart[$i]['name'] . "</td>
+                                    <td>" . $cart[$i]['price'] . "</td>
+                                    <td>" . $cart[$i]['description'] . "</td>
+                                    <td>" . $cart[$i]['quantity'] . "</td>
+                                    <td>" . $sub_total . "</td>
+                                </tr>"
+                                ;  
+                            
+                            }
+                        echo "</table><br>";
+                        echo "Total amount to be paid: $" . $total . "<br>";
                     ?>
-                </table>
+                
                 
                     <form action= "https://sandbox.paypal.com/cgi-bin/webscr" method="post">
                         
                         <input type="hidden" name="custom"  id="custom" value="">
-                        <input type="hidden" name="cmd" value="cart">
+                        <input type="hidden" name="cmd" value="_cart">
                         <input type="hidden" name="upload" value="1">
                         <input type="hidden" name="business" value="esmG5T1@ymail.com">
+                        
+                        <?php
+                        for ( $i = 0 ; $i < sizeof($_SESSION['_cart']) ; $i++ ){
+                            echo "
+                            <div id = 'item_" . ($i+1) . "' class = 'itemwrap'>
+                            <input name = 'item_name_" . ($i+1) ."' value = '" . $cart[$i]['name'] . "' type = 'hidden'>
+                            <input type='hidden' name='amount_". ($i+1) . "' value='" . $cart[$i]['price'] ."'> 
+                            <input type='hidden' name='quantity_" . ($i+1) . "' value='" . $cart[$i]['quantity'] . "'> 
+                            </div>";
+                        }
+                       
+                        ?>
                         <input type="hidden" name="custom"  id="custom" value="">
-                        <!--                   
-                         $x = $x + 1;
-                         $checkout_btn .= '<div id = "item_' . $x . '" class = "itemwrap">
-						 <input name = "item_name_'  . $x . '" value = "' . $item_name . '" type = "hidden">
-                                                  <input type="hidden" name="amount_' . $x .  '" value="' . $subtotal. '"> 
-						  
-                         <input type="hidden" name="quantity_' . $x . '" value="' . $value . '"> 
-                             
-                         </div>' ;
-                         -->
-                        <input type="hidden" name="return" value="add-order.php">
+                        <!-- need to change the foolowing directy to the root directry-->
+                        <input type="hidden" name="return" value="http:\\localhost\food-delivery-to-hell/add-order.php"> 
                         <input type="hidden" name="rm" value="2">
                         <input type="hidden" name="cbt" value="Return to The Store">
                

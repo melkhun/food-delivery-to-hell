@@ -4,9 +4,9 @@ $type = $_POST['type'];
 $username = $_POST['Username'];
 $Password = $_POST['Password'];
 
-if ($type == "Customer" && $username == "Cus" && $Password == "Cus123"){
+if ($type == "Customer" && $username == "g5t4" && $Password == "g5t4"){
     header("Location: Customer.html");
-}elseif ($type == "DeliveryMan" && $username == "Dri" && $Password == "Dri123"){
+}elseif ($type == "DeliveryMan" && $username == "johndelivers" && $Password == "1234"){
     header("Location: DeliverMan.html");
 }else{
     $_SESSION['errors'] = [ 'Username/password is incorrect' ];

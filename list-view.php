@@ -36,6 +36,7 @@
         var rows = "";
         $.get(serviceURL, function (data) {
             var foodList = data.Food; //the arr is in data.Food of the JSON
+            // 
             
             // for loop to setup each table row with obtained book data
             for (var i = 0; i < foodList.length; i++) {
