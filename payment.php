@@ -16,6 +16,7 @@
 
             <?php
             session_start();
+                $_SESSION['location']= $_POST['location'];
                 $cart = array();
                 $count = 0;
                 for ( $i = 0; $i < 6; $i++) {

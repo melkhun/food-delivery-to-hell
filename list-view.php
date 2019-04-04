@@ -25,6 +25,8 @@
                         <th>Quantity</th>
                     </tr>
                 </table>
+                <label for="location">Location</label>
+                <input type='text' name='location' placeholder='input Location'><br>
                 <button name="pay" type="submit" class="btn btn btn-success center-block" style="font-size : 30px; height: 100px; width:300px">Confirm Order &rarr; </button>
             </form>
         </div>
