@@ -18,6 +18,7 @@
             <form id="Pay" class="form" action="payment.php" method="post"> 
                 <table id="foodTable" class='table text-center' id='food-list'>
                     <tr>
+                        <th>ID</th>
                         <th>Item</th>
                         <th>Price</th>
                         <th>Description</th>
@@ -41,6 +42,7 @@
             // for loop to setup each table row with obtained book data
             for (var i = 0; i < foodList.length; i++) {
                 eachRow =
+                    "<td>" + foodList[i].food_id + "<input type='hidden' name='food_id[]'  value='" + foodList[i].food_id + "'></td>" +
                     "<td>" + foodList[i].food_name + "<input type='hidden' name='food_name[]'  value='" + foodList[i].food_name + "'></td>" +
                     "<td>" + foodList[i].food_price + "<input type='hidden' name='food_price[]'  value='" + foodList[i].food_price + "'></td>" +
                     "<td>" + foodList[i].food_description + "<input type='hidden' name='food_description[]'  value='" + foodList[i].food_description + "'></td>" +
