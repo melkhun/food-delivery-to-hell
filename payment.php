@@ -73,7 +73,9 @@
                             
                             }   
                         echo "</table><br>";
-                        echo "Total amount to be paid: $" . $total . "<br>";
+                        echo "Total amount to be paid:";
+                        echo "<br>"; 
+                        echo "<h2>$" . $total . "</h2><br>";
                         $_SESSION['postCart']= $addCart;
                     ?>
                 
@@ -104,7 +106,8 @@
                
                                            
                         <input type="hidden" name="currency_code"  value="SGD">
-                        <input type="submit" height= "42" width ="200" name="submit" class="btn btn btn-success center-block" style="font-size : 30px; height: 100px; width:300px"></center>
+                        <br>
+                        <input type="image" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/44_Yellow_CheckOut_Pill_Button.png" alt="Check out with PayPal" />
                         </form>
 
                 

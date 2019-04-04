@@ -12,9 +12,14 @@
 
 <body>
   
-    <div class="container">
-        <div class="jumbotron text-center">
-            <img src="snaktime_logo.png" class="img-fluid">
+<body style="background-color:#DAF7A6">
+    <div class="jumbotron text-center" style="background-color:#DAF7A6">
+        <div class="container">
+
+            <img src="snaktime_logo.png" class="img-fluid" style="width:20%">
+            <p class="lead "><strong>Welcome to G5T1's Restaurant</strong></p>
+
+
             <form id="Pay" class="form" action="payment.php" method="post"> 
                 <table id="foodTable" class='table text-center' id='food-list'>
                     <tr>
@@ -26,8 +31,10 @@
                     </tr>
                 </table>
                 <label for="location">Location</label>
-                <input type='text' name='location' placeholder='input Location'><br>
-                <button name="pay" type="submit" class="btn btn btn-success center-block" style="font-size : 30px; height: 100px; width:300px">Confirm Order &rarr; </button>
+                <input type='text' name='location' placeholder=' Input Location'><br>
+                <br>
+                <button name="submit" type="submit" class="btn btn btn-success center-block">Confirm Order &rarr; </button>
+                <div class="col-lg-4"></div>
             </form>
         </div>
     </div>
