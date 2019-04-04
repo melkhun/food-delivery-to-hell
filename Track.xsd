@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2018 (https://www.liquid-technologies.com)-->
+<schema xmlns:tns="http://www.amazing.com/Shipping" elementFormDefault="qualified" targetNamespace="http://www.amazing.com/Shipping" xmlns="http://www.w3.org/2001/XMLSchema">
+    
+    <complexType name="Track_info">
+        <sequence>
+            <element name="origins" type="string" minOccurs="1" />
+            <element name="destination" type="string" minOccurs="1" />
+        </sequence>
+    </complexType>
+    <element name="Track_info" type="tns:Track_info" />
+    
+</schema>
