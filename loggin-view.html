@@ -9,26 +9,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <div class="container">
-        <div class="jumbotron text-center">
-            <img src="snaktime_logo.png" class="img-fluid">
-            <p class="lead ">Welcome to G5T1-Restaurant!!</p>
+<body style="background-color:#DAF7A6">
+    <div class="jumbotron text-center" style="background-color:#DAF7A6">
+        <div class="container">
+
+            <img src="snaktime_logo.png" class="img-fluid" style="width:20%">
+            <p class="lead "><strong>Welcome to G5T1's Restaurant</strong></p>
             <hr class="my-4">
-            <form role="form" id="search-form" class="form" action="login.php" method="post">
-                <div class="form-group">
-                    <label for="Username">Username:</label>
-                    <input class="form-control" type="text" name="Username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <label for="Password">Password:</label>
-                    <input class="form-control" type="password" name="Password" placeholder="Password">
-                </div>
-                <input type="radio" name="type" value="Customer" checked> Customer<br>
-                <input type="radio" name="type" value="DeliveryMan"> Deliver Man<br> 
-                <br>
-                <button name="submit" type="submit" class="btn btn btn-success center-block">Log In &rarr; </button>
-            </form>
+
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                        <form role="form" id="search-form" class="form" action="login.php" method="post">
+                            <div class="form-group">
+                                <label for="Username">Username:</label>
+                                <input class="form-control text-center" type="text" name="Username" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label for="Password">Password:</label>
+                                <input class="form-control text-center" type="password" name="Password" placeholder="Password">
+                            </div>
+                            <input type="radio" name="type" value="Customer" checked> Customer<br>
+                            <input type="radio" name="type" value="DeliveryMan"> Deliver Man<br> 
+                            <br>
+                            <button name="submit" type="submit" class="btn btn btn-success center-block">Log In &rarr; </button>
+                        </form>
+                    </div>
+                <div class="col-lg-4"></div>
+            </div>
+            
         </div>
     </div>
     
