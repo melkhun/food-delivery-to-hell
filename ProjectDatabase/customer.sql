@@ -20,10 +20,9 @@ CREATE TABLE `customers` (
   `customer_number` int(8) NOT NULL,
   `postalcode` int(6) NOT NULL,
   `customer_email` varchar(100) NOT NULL,
-  `customer_card_number` bigint NOT NULL,
   
   PRIMARY KEY (`customer_id`,`username`)
 );
 
-INSERT INTO `customers` (`customer_id`, `username`, `password`, `customer_name`, `gender`, `customer_number`, `postalcode`, `customer_email`, `customer_card_number`) VALUES
-(111111, 'g5t4', 'g5t4', 'User G5t4', 'M', 91234567, 178903, 'suet.ting.chong@gmail.com', 5400123412341234);
+INSERT INTO `customers` (`customer_id`, `username`, `password`, `customer_name`, `gender`, `customer_number`, `postalcode`, `customer_email`) VALUES
+(111111, 'g5t1', 'g5t1', 'User G5T1', 'M', 91234567, 178903, 'esd213g5t1@outlook.com');

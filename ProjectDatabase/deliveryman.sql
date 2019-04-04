@@ -22,4 +22,4 @@ CREATE TABLE `delivery_man` (
 );
 
 INSERT INTO `delivery_man` (`delivery_man_id`, `username`, `password`, `delivery_man_name`, `delivery_man_number`, `delivery_man_email`, `delivery_man_postalcode`) VALUES
-(500000, 'johndelivers', '1234', 'John Deliver', 98765432, 'suet.ting.chong@gmail.com', 160007 );
+(500000, 'johndelivers', '1234', 'John Deliver', 98765432, 'esd213g5t1@outlook.com', 179100 );
