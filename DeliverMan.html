@@ -27,14 +27,15 @@
                             <th>Delivery Location</th>
                             <th>Total Price</th>
                             <th>Status</th>
+                            <th>Selection</th>
                         </tr>
                     </table>
                     <br>
-                    <label for="select_order"><b>Select Order : </b></label>
+                    <!-- <label for="select_order"><b>Select Order : </b></label>
                     <br>
                     <input type='text' name='select_order' placeholder=' Input Order ID'><br>
                     <br>
-                    <button name="submit" type="submit" class="btn btn btn-success center-block">Confirm Order &rarr; </button>
+                    <button name="submit" type="submit" class="btn btn btn-success center-block">Confirm Order &rarr; </button> -->
                     <div class="col-lg-4"></div>
                 </form>
             </div>
@@ -43,10 +44,10 @@
     <script >
         $(function () {
             // Change serviceURL to your own
-            var serviceURL = "http://Jolly:8081/orders/status=open";
+            var serviceURL = "http://Jolly:8080/get_all_order/open";
             var rows = "";
             $.get(serviceURL, function (data) {
-                var ordersList = data.Orders; //the arr is in data.Food of the JSON
+                var ordersList = data.Get_All_Order; //the arr is in data.Food of the JSON
                 // 
                 
                 // for loop to setup each table row with obtained book data
@@ -58,10 +59,12 @@
                         "<td>" + ordersList[i].delivery_location + "<input type='hidden' name='delivery_location[]'  value='" + ordersList[i].delivery_location + "'></td>" +
                         "<td>" + ordersList[i].total_price + "<input type='hidden' name='total_price[]'  value='" + ordersList[i].total_price + "'></td>" +
                         "<td>" + ordersList[i].status + "<input type='hidden' name='status[]'  value='" + ordersList[i].status + "'></td>" +
-                        '<td> <input type="text" name="Quantity[]" placeholder="Quantity"></td>'
+                        "<td> <input type='submit' name='submit' value='select'></td>"
+                        ;
+                        
                     
-    
-                    rows += "<tr>" + eachRow + "</tr>";
+                    
+                    rows += "<tr> 1" + eachRow + "</tr>";
                     
                 }
                 $('#orderTable').append(rows);
