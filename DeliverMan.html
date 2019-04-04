@@ -1,4 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-this is the delivery man page
+    <head>
+        <title>G5T1-Restaurant</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    </head>
+    <body>
+        
+    <body style="background-color:#DAF7A6">
+        <div class="jumbotron text-center" style="background-color:#DAF7A6">
+            <div class="container">
+    
+                <img src="snaktime_logo.png" class="img-fluid" style="width:20%">
+                <p class="lead "><h3>Hello! <br>These are all the open orders</h3></p>
+    
+    
+                <form id="open_orders" class="form" action="order_confirm.php" method="post"> 
+                    <table id="orderTable" class='table text-center' id='order-list'>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Order Time</th>
+                            <th>Customer ID</th>
+                            <th>Delivery Location</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </table>
+                    <br>
+                    <label for="select_order"><b>Select Order : </b></label>
+                    <br>
+                    <input type='text' name='select_order' placeholder=' Input Order ID'><br>
+                    <br>
+                    <button name="submit" type="submit" class="btn btn btn-success center-block">Confirm Order &rarr; </button>
+                    <div class="col-lg-4"></div>
+                </form>
+            </div>
+        </div>
+    
+    <script >
+        $(function () {
+            // Change serviceURL to your own
+            var serviceURL = "http://Jolly:8081/orders/status=open";
+            var rows = "";
+            $.get(serviceURL, function (data) {
+                var ordersList = data.Orders; //the arr is in data.Food of the JSON
+                // 
+                
+                // for loop to setup each table row with obtained book data
+                for (var i = 0; i < ordersList.length; i++) {
+                    eachRow =
+                        "<td>" + ordersList[i].order_id + "<input type='hidden' name='order_id[]'  value='" + ordersList[i].order_id + "'></td>" +
+                        "<td>" + ordersList[i].order_time + "<input type='hidden' name='order_time[]'  value='" + ordersList[i].order_time + "'></td>" +
+                        "<td>" + ordersList[i].customer_id + "<input type='hidden' name='customer_id[]'  value='" + ordersList[i].customer_id + "'></td>" +
+                        "<td>" + ordersList[i].delivery_location + "<input type='hidden' name='delivery_location[]'  value='" + ordersList[i].delivery_location + "'></td>" +
+                        "<td>" + ordersList[i].total_price + "<input type='hidden' name='total_price[]'  value='" + ordersList[i].total_price + "'></td>" +
+                        "<td>" + ordersList[i].status + "<input type='hidden' name='status[]'  value='" + ordersList[i].status + "'></td>" +
+                        '<td> <input type="text" name="Quantity[]" placeholder="Quantity"></td>'
+                    
+    
+                    rows += "<tr>" + eachRow + "</tr>";
+                    
+                }
+                $('#orderTable').append(rows);
+                return ordersList;
+            }) 
+            
+        });
+    </script>
+    
+    </body>
+    </html>

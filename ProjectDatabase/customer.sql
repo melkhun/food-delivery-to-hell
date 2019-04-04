@@ -25,4 +25,10 @@ CREATE TABLE `customers` (
 );
 
 INSERT INTO `customers` (`customer_id`, `username`, `password`, `customer_name`, `gender`, `customer_number`, `postalcode`, `customer_email`) VALUES
-(111111, 'g5t1', 'g5t1', 'User G5T1', 'M', 91234567, 178903, 'esd213g5t1@outlook.com');
+(10001, 'g5t1', 'g5t1', 'User G5T1', 'M', 91234567, 178903, 'esd213g5t1@outlook.com'),
+(10002, 'melvin', 'melvin', 'Melvin Ong', 'M', 91345812, 178903, 'esd213g5t1@outlook.com'),
+(10003, 'ferne', 'ferne', 'Ferne Lo', 'F', 81285612, 178903, 'esd213g5t1@outlook.com'),
+(10004, 'junyi', 'junyi', 'Chen Junyi', 'M', 88993456, 178903, 'esd213g5t1@outlook.com'),
+(10005, 'joseph', 'joseph', 'Joseph Koh', 'M', 93356712, 178903, 'esd213g5t1@outlook.com'),
+(10006, 'jerry', 'jerry', 'Jerry Yap', 'M', 94561205, 178903, 'esd213g5t1@outlook.com'),
+(10007, 'suetting', 'suetting', 'Chong Suet Ting', 'F', 96235225, 178903, 'esd213g5t1@outlook.com');

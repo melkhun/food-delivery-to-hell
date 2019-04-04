@@ -20,8 +20,12 @@ CREATE TABLE `food` (
 );
 
 INSERT INTO `food` (`food_id`, `food_name`, `food_price`, `food_description`) VALUES
-(001, 'apple pie', 2.00, 'best apple pie'),
-(002, 'banana pie', 4.00, 'best banana pie'),
-(003, 'pear pie', 6.00, 'best pear pie');
+(001, 'Apple Pie', 2.00, 'Best apple pie'),
+(002, 'Banana Pie', 4.00, 'Best banana pie'),
+(003, 'Pear Pie', 6.00, 'Best pear pie'),
+(004, 'Laksa', 8.00, 'Our housebrand Laksa'),
+(005, 'Chicken Satay', 3.50, 'Grill chicken on stick'),
+(006, 'Snake Soup', 50.00, 'The soup will make you strong like a snake. A strong snake.');
+
 
 

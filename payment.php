@@ -12,13 +12,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
     </head>
     <body style="background-color:#DAF7A6">
+    
 
             <?php
+            session_start();
+                $_SESSION['location']= $_POST['location'];
                 $cart = array();
                 $count = 0;
-                for ( $i = 0; $i < 3; $i++) {
+                for ( $i = 0; $i < 6; $i++) {
                     if ((int)$_POST['Quantity'][$i] >0){
-                        $cart[$count]=array('name'=>$_POST['food_name'][$i], 'price'=>(float)$_POST['food_price'][$i], 'description'=>$_POST['food_description'][$i], 'quantity'=>(int)$_POST['Quantity'][$i]);
+                        $cart[$count]=array('food_id'=>$_POST['food_id'][$i],'food_name'=>$_POST['food_name'][$i], 'food_price'=>(float)$_POST['food_price'][$i], 'food_description'=>$_POST['food_description'][$i], 'quantity'=>(int)$_POST['Quantity'][$i]);
                         $count+=1;
                     } 
                 }
@@ -43,6 +46,7 @@
             
                 <table id="foodTable" class='table text-center' id='food-list'>
                     <tr>
+                        <th>ID</th>
                         <th>Item</th>
                         <th>Price</th>
                         <th>Description</th>
@@ -51,23 +55,28 @@
                     </tr>
                     <?php
                         $total = 0;
+                        $addCart = array();
                         $cart=$_SESSION['_cart'];
                         for ($i = 0 ; $i < sizeof($cart) ; $i++){
-                            $sub_total = $cart[$i]['price']*$cart[$i]['quantity'];
+                            $sub_total = $cart[$i]['food_price']*$cart[$i]['quantity'];
                             $total = $total + $sub_total;
                             echo "
                                 <tr>
-                                    <td>" . $cart[$i]['name'] . "</td>
-                                    <td>" . $cart[$i]['price'] . "</td>
-                                    <td>" . $cart[$i]['description'] . "</td>
+                                    <td>" . $cart[$i]['food_id'] . "</td>
+                                    <td>" . $cart[$i]['food_name'] . "</td>
+                                    <td>" . $cart[$i]['food_price'] . "</td>
+                                    <td>" . $cart[$i]['food_description'] . "</td>
                                     <td>" . $cart[$i]['quantity'] . "</td>
                                     <td>" . $sub_total . "</td>
-                                </tr>"
-                                ;  
+                                </tr>";  
+                                $addCart[$i]=array('food_id'=>$cart[$i]['food_id'],  'quantity'=>$cart[$i]['quantity'],'sub_total'=>$sub_total);
                             
-                            }
+                            }   
                         echo "</table><br>";
-                        echo "Total amount to be paid: $" . $total . "<br>";
+                        echo "Total amount to be paid:";
+                        echo "<br>"; 
+                        echo "<h2>$" . $total . "</h2><br>";
+                        $_SESSION['postCart']= $addCart;
                     ?>
                 
                 
@@ -82,8 +91,8 @@
                         for ( $i = 0 ; $i < sizeof($_SESSION['_cart']) ; $i++ ){
                             echo "
                             <div id = 'item_" . ($i+1) . "' class = 'itemwrap'>
-                            <input name = 'item_name_" . ($i+1) ."' value = '" . $cart[$i]['name'] . "' type = 'hidden'>
-                            <input type='hidden' name='amount_". ($i+1) . "' value='" . $cart[$i]['price'] ."'> 
+                            <input name = 'item_name_" . ($i+1) ."' value = '" . $cart[$i]['food_name'] . "' type = 'hidden'>
+                            <input type='hidden' name='amount_". ($i+1) . "' value='" . $cart[$i]['food_price'] ."'> 
                             <input type='hidden' name='quantity_" . ($i+1) . "' value='" . $cart[$i]['quantity'] . "'> 
                             </div>";
                         }
