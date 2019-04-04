@@ -11,8 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
     </head>
-    
-    <body style="background-color:rgb(241, 241, 231)">
+    <body style="background-color:#DAF7A6">
 
             <?php
                 $cart = array();
@@ -28,10 +27,20 @@
 
             ?>
 
+<div class="jumbotron text-center" style="background-color:#DAF7A6">
+<div class="container">
 
-        <div class="container">
-        <div class="jumbotron text-center">
-            <img src="snaktime_logo.png" class="img-fluid">
+            <img src="snaktime_logo.png" class="img-fluid" style="width:20%">
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <p class="h2">Review Your Order</p>
+                    <br>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+            
                 <table id="foodTable" class='table text-center' id='food-list'>
                     <tr>
                         <th>Item</th>
