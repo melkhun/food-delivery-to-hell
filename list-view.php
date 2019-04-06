@@ -21,18 +21,20 @@
 
 
             <form id="Pay" class="form" action="payment.php" method="post"> 
+            <label for="location">Location</label>
+                <input type='text' name='location' placeholder=' Input Location'><br>
+                <input type='text' name='quantity' placeholder='Enter Quantity'><br>
                 <table id="foodTable" class='table text-center' id='food-list'>
                     <tr>
                         <th>ID</th>
                         <th>Item</th>
                         <th>Price</th>
                         <th>Description</th>
-                        <th>Quantity</th>
+
+                        <th>select</th>
                     </tr>
                 </table>
-                <label for="location">Location</label>
-                <input type='text' name='location' placeholder=' Input Location'><br>
-                <br>
+                
                 <button name="submit" type="submit" class="btn btn btn-success center-block">Confirm Order &rarr; </button>
                 <div class="col-lg-4"></div>
             </form>
@@ -55,7 +57,8 @@
                     "<td>" + foodList[i].food_name + "<input type='hidden' name='food_name[]'  value='" + foodList[i].food_name + "'></td>" +
                     "<td>" + foodList[i].food_price + "<input type='hidden' name='food_price[]'  value='" + foodList[i].food_price + "'></td>" +
                     "<td>" + foodList[i].food_description + "<input type='hidden' name='food_description[]'  value='" + foodList[i].food_description + "'></td>" +
-                    '<td> <input type="text" name="Quantity[]" placeholder="Quantity"></td>'
+                    "<td> <input type='radio' name='selection' value='"+foodList[i].food_id+"' ></td>"
+                    
                 
 
                 rows += "<tr>" + eachRow + "</tr>";

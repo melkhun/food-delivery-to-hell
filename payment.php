@@ -17,12 +17,16 @@
             <?php
             session_start();
                 $_SESSION['location']= $_POST['location'];
-                $cart = array();
-                $count = 0;
+                $quantity=$_POST['quantity'];
+ 
                 for ( $i = 0; $i < 6; $i++) {
-                    if ((int)$_POST['Quantity'][$i] >0){
-                        $cart[$count]=array('food_id'=>$_POST['food_id'][$i],'food_name'=>$_POST['food_name'][$i], 'food_price'=>(float)$_POST['food_price'][$i], 'food_description'=>$_POST['food_description'][$i], 'quantity'=>(int)$_POST['Quantity'][$i]);
-                        $count+=1;
+                    if ((int)$_POST['selection'] == (int)$_POST['food_id'][$i]){
+                        $cart=array('food_id'=>$_POST['food_id'][$i],'food_name'=>$_POST['food_name'][$i], 'food_price'=>(float)$_POST['food_price'][$i], 'food_description'=>$_POST['food_description'][$i], 'quantity'=>(int)$_POST['quantity']);
+                        $food_id=$_POST['food_id'][$i];
+                        $food_name=$_POST['food_name'][$i];
+                        $food_price=$_POST['food_price'][$i];
+                        $food_description=$_POST['food_description'][$i];
+                        
                     } 
                 }
                 $_SESSION['_cart']=$cart;
@@ -51,32 +55,22 @@
                         <th>Price</th>
                         <th>Description</th>
                         <th>Quantity</th>
-                        <th>Sub-Total</th>
+                        <th>Total Amount</th>
                     </tr>
                     <?php
-                        $total = 0;
-                        $addCart = array();
-                        $cart=$_SESSION['_cart'];
-                        for ($i = 0 ; $i < sizeof($cart) ; $i++){
-                            $sub_total = $cart[$i]['food_price']*$cart[$i]['quantity'];
-                            $total = $total + $sub_total;
-                            echo "
-                                <tr>
-                                    <td>" . $cart[$i]['food_id'] . "</td>
-                                    <td>" . $cart[$i]['food_name'] . "</td>
-                                    <td>" . $cart[$i]['food_price'] . "</td>
-                                    <td>" . $cart[$i]['food_description'] . "</td>
-                                    <td>" . $cart[$i]['quantity'] . "</td>
-                                    <td>" . $sub_total . "</td>
-                                </tr>";  
-                                $addCart[$i]=array('food_id'=>$cart[$i]['food_id'],  'quantity'=>$cart[$i]['quantity'],'sub_total'=>$sub_total);
-                            
-                            }   
-                        echo "</table><br>";
-                        echo "Total amount to be paid:";
-                        echo "<br>"; 
-                        echo "<h2>$" . $total . "</h2><br>";
-                        $_SESSION['postCart']= $addCart;
+                    $total = (int)$quantity * (int)$food_price;
+                    $_SESSION['total'] =$total; 
+                        echo "
+                            <tr>
+                                <td>".$food_id."</td>
+                                <td>".$food_name."</td>
+                                <td>".$food_price."</td>
+                                <td>".$food_description."</td>
+                                <td>".$quantity."</td>
+                                <td>".$total."</td>
+
+                            </tr>";
+                    
                     ?>
                 
                 
@@ -88,15 +82,14 @@
                         <input type="hidden" name="business" value="esmG5T1@ymail.com">
                         
                         <?php
-                        for ( $i = 0 ; $i < sizeof($_SESSION['_cart']) ; $i++ ){
-                            echo "
-                            <div id = 'item_" . ($i+1) . "' class = 'itemwrap'>
-                            <input name = 'item_name_" . ($i+1) ."' value = '" . $cart[$i]['food_name'] . "' type = 'hidden'>
-                            <input type='hidden' name='amount_". ($i+1) . "' value='" . $cart[$i]['food_price'] ."'> 
-                            <input type='hidden' name='quantity_" . ($i+1) . "' value='" . $cart[$i]['quantity'] . "'> 
-                            </div>";
-                        }
                        
+                            echo "
+                            <div id = 'item_1' class = 'itemwrap'>
+                            <input name = 'item_name_1' value = '" . $food_name. "' type = 'hidden'>
+                            <input type='hidden' name='amount_1' value='" .$food_price."'> 
+                            <input type='hidden' name='quantity_1' value='" . $quantity. "'> 
+                            </div>";
+                        
                         ?>
                         <input type="hidden" name="custom"  id="custom" value="">
                         <!-- need to change the foolowing directy to the root directry-->
