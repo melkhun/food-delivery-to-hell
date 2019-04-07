@@ -34,7 +34,7 @@ INSERT INTO `customers` (`customer_id`, `username`, `password`, `customer_name`,
 (100007, 'suetting', 'suetting', 'Chong Suet Ting', 'F', 96235225, 178903, 'esd213g5t1@outlook.com');
 
 --
--- Database: `deliveryman`
+-- Database: `g5t1_restaurant`
 --
 DROP DATABASE IF EXISTS `deliveryman`;
 CREATE DATABASE `deliveryman`;
@@ -66,7 +66,7 @@ INSERT INTO `delivery_man` (`delivery_man_id`, `username`, `password`, `delivery
 (500007, 'suetting', 'suetting', 'Chong Suet Ting', 96235225,'esd213g5t1@outlook.com', 160007);
 
 --
--- Database: `food`
+-- Database: `foods`
 --
 DROP DATABASE IF EXISTS `food`;
 CREATE DATABASE `food`;
