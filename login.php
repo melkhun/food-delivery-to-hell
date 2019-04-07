@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $type = $_POST['type'];
 $username = $_POST['Username'];
 $Password = $_POST['Password'];
@@ -7,6 +9,7 @@ $Password = $_POST['Password'];
 if ($type == "Customer" && $username == "g5t1" && $Password == "g5t1"){
     header("Location: Customer.html");
 }elseif ($type == "DeliveryMan" && $username == "g5t1" && $Password == "g5t1"){
+    $_SESSION['id'] = $username;
     header("Location: DeliverMan.html");
 }else{
     $_SESSION['errors'] = [ 'Username/password is incorrect' ];
