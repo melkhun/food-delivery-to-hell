@@ -1,5 +1,5 @@
 --
--- Database: `g5t1_restaurant`
+-- Database: `deliveryman`
 --
 DROP DATABASE IF EXISTS `deliveryman`;
 CREATE DATABASE `deliveryman`;

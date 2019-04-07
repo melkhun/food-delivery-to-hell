@@ -1,5 +1,5 @@
 --
--- Database: `foods`
+-- Database: `food`
 --
 DROP DATABASE IF EXISTS `food`;
 CREATE DATABASE `food`;
