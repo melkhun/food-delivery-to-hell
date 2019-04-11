@@ -92,8 +92,11 @@
                         
                         ?>
                         <input type="hidden" name="custom"  id="custom" value="">
-                        <!-- need to change the foolowing directy to the root directry-->
+
+                        <!-- need to change the following directy to the root directry-->
                         <input type="hidden" name="return" value="http:\\localhost\food-delivery-to-hell/add-order.php"> 
+                        
+                        
                         <input type="hidden" name="rm" value="2">
                         <input type="hidden" name="cbt" value="Return to The Store">
                

@@ -21,7 +21,7 @@
 <script>
 $(function () {
 
-    var serviceURL = "http://desktop-vhq8qdk:8080/get_order_updated/<?=$_POST['order_id'][0]?>";
+    var serviceURL = "http://Jolly:8080/get_order_updated/<?=$_POST['order_id'][0]?>";
         $.get(serviceURL, function (data) {
             console.log(data);
         }) 

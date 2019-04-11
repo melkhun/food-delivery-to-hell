@@ -2,13 +2,20 @@
  <script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <?php
 session_start();
-    $cart=$_SESSION['_cart'];
+$cart=$_SESSION['_cart'];
 // echo $cart['food_id']."<br>";
 // echo $cart['quantity']."<br>";
 // echo $_SESSION['location']."<br>";
 // echo $_SESSION['total']."<br>";
+
+// $locaton = $_SESSION['location'];
+// $total = $_SESSION['total'];
+
+// As the team is unable to use javascript to call for the service as shown below, the team decided to use MySQL Query statement to post the order into the database.
+
 $cus=000001;
 $del=0;
 $sta="open";
@@ -41,57 +48,51 @@ $sta="open";
 
             $stmt->closeCursor();
             $pdo=null;
-            
-
-
-?>
-    <!-- <div id='data'></div>
-     <input id='leggo' type='submit' name='submit' value='select'> -->
-
-    <!-- <script>
-    $(document).ready(function () {
-        // Change serviceURL to your own
-        var addItem ={};
-        $("#leggo").click(function () {
-        // for (var i = 0; i < <?php //echo $sizeofpost ?>; i++) {
-        //     addItem.food_id=1;
-        //     addItem.quantity=1;
-        //     addItem.sub_total=1;
-        // }
-        var postIt = {}
-            postIt.order_time = "2019-04-04T07:59:22.183Z";
-            postIt.customer_id = 1;
-            postIt.delivery_location = <?php //echo $_SESSION['location'] ?>;
-            postIt.total_price = <?php //echo $_SESSION['total'] ?>;
-            postIt.delivery_man_id = 0;
-            postIt.status = "open";
-            postIt.food_id = <?php //echo $cart['food_id'] ?>;
-            postIt.quantity = <?php //echo $cart['quantity'] ?>;
-            
         
-        // console.log(postIt);
-        // console.log(JSON.stringify(postIt))
+?>
 
-        // var url = "http://Jolly:8080/post_order"
-            // var joke = JSON.stringify();
+
+<!-- 
+    <div id='data'></div>
+     <input id='leggo' type='submit' name='submit' value='select'> --> 
+
+    <!--<script>
+    $(function () {
+
+
+        var local = <?php //$locaton ?>;
+        var total =  <?php  //$total ?>;
+        var food_id = <?php //$cart['food_id'] ?>;
+        var quantity = <?php //$cart['quantity'] ?>;
+
+        var postIt = {
+            "order_time":"2019-04-04T07:59:22.183Z" , 
+            "customer_id":100001,
+            "delivery_location":local,
+            "total_price":total,
+            "delivery_man_id":01,
+            "status":"open",
+            "food_id":food_id,
+            "quantity":quantity
+            };
+            
+        var joke = JSON.stringify(postIt);   
+        var serviceURL = 'http://Jolly:8080/post_order';
+        // As the team is unable to use javascript to call for the service, the team decided to use MySQL Query statement to post the order into the database. as shown above
+      
+        var joke = JSON.stringify(postIt);
 
         $.ajax({
-        type: "POST",
-        data: JSON.stringify(postIt),
-        datatype=JSON,
+        // datatype=JSON,
         // data: category,
-        url:"http://Jolly:8080/post_order",
-        contentType: "application/json",
-        success: function () {
-          alert('done');
-        },
-        error: function (error) {
-          alert('gone');
-        });
-        }})
-         
-    });
-</script> -->
+        url:serviceURL,
+        method:'POST',
+        data:joke,
+        dataType: "json",
+        contentType:'application/json; charset=utf-8'
+                
+    })
+ </script>-->
 
 
 

@@ -2,6 +2,8 @@
 
 session_start();
 
+
+
 $type = $_POST['type'];
 $username = $_POST['Username'];
 $Password = $_POST['Password'];

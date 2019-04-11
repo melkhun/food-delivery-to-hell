@@ -33,7 +33,7 @@
     <script>
     $(function () {
         // Change serviceURL to your own
-        var serviceURL = "http://desktop-vhq8qdk:8084/track/1";
+        var serviceURL = "http://Jolly:8084/track/1";
         var eta = "";
         $.get(serviceURL, function (data) {
             var json = JSON.parse(data);

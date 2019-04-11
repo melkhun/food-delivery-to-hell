@@ -29,11 +29,6 @@
                         </tr>
                     </table>
                     <br>
-                    <!-- <label for="select_order"><b>Select Order : </b></label>
-                    <br>
-                    <input type='text' name='select_order' placeholder=' Input Order ID'><br>
-                    <br>-->
-                    <!-- <input type='text' name='quantity' placeholder='Enter Quantity'><br><br> -->
 
                     <button name="submit" type="submit" class="btn btn btn-success center-block">Confirm Order &rarr; </button>
                     <div class="col-lg-4"></div>
@@ -44,7 +39,7 @@
     <script >
         $(function () {
             // Change serviceURL to your own
-            var serviceURL = "http://desktop-vhq8qdk:8080/get_all_order/open";
+            var serviceURL = "http://Jolly:8080/get_all_order/open";
             var rows = "";
             $.get(serviceURL, function (data) {
                 var ordersList = data.Order; //the arr is in data.Food of the JSON
@@ -53,13 +48,13 @@
                 // for loop to setup each table row with obtained book data
                 for (var i = 0; i < ordersList.length; i++) {
                     eachRow =
-                        "<td>" + ordersList[i].order_id + "<input type='hidden' name='order_id[]'  value='" + ordersList[i].order_id + "'></td>" +
+                        "<td>" + ordersList[i].order_id + "<input type='hidden' name='id[]'  value='" + ordersList[i].order_id + "'></td>" +
                         "<td>" + ordersList[i].order_time + "<input type='hidden' name='order_time[]'  value='" + ordersList[i].order_time + "'></td>" +
                         "<td>" + ordersList[i].customer_id + "<input type='hidden' name='customer_id[]'  value='" + ordersList[i].customer_id + "'></td>" +
                         "<td>" + ordersList[i].delivery_location + "<input type='hidden' name='delivery_location[]'  value='" + ordersList[i].delivery_location + "'></td>" +
                         "<td>" + ordersList[i].total_price + "<input type='hidden' name='total_price[]'  value='" + ordersList[i].total_price + "'></td>" +
                         "<td>" + ordersList[i].status + "<input type='hidden' name='status[]'  value='" + ordersList[i].status + "'></td>" +
-                        "<td> <input type='radio' name='selection' value='"+ ordersList[i].order_id +"' ></td>"
+                        "<td> <input type='radio' name='order_id' value='"+ ordersList[i].order_id +"' ></td>"
                         ;
                         
                     
@@ -73,10 +68,7 @@
             
         });
 
-        // function f() {
-        //     var win = window.open("http://Jolly:8080/get_order_updated/1", "", "width=1, height=1");
-        //     win.blur();
-        // }
+
     </script>
     
     </body>

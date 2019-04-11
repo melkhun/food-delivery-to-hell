@@ -44,7 +44,7 @@
 <script >
     $(function () {
         // Change serviceURL to your own
-        var serviceURL = "http://desktop-vhq8qdk:8081/food";
+        var serviceURL = "http://Jolly:8081/food";
         var rows = "";
         $.get(serviceURL, function (data) {
             var foodList = data.Food; //the arr is in data.Food of the JSON
